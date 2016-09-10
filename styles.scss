@@ -1,8 +1,40 @@
-$bg-gray: #4e4e4e;
-$fg-gray: #808080;
+$color-gray-dark:   #111;
+$color-gray-medium: #4e4e4e;
+$color-gray-light:  #808080;
+$color-gold-light:  #ffb137;
+$color-gold-dark:   #b27514;
+
+$dimen-row-height: 88px;
 
 // Reset
 body, p, h1 {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: $color-gray-medium;
+  color: white;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+rune-header {
+  background-color: $color-gray-dark;
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.333);
+  display: block;
+  height: $dimen-row-height;
+
+  .controls {
+    float: right;
+  }
+
+  .divider {
+    border-left: 1px solid $color-gray-light;
+    display: block;
+    height: 70px;
+    width: 1px;
+  }
 }
