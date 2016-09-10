@@ -14,7 +14,7 @@
     "tsc:w": "tsc -w"
   },
   "author": "Sam Noedel <sam.noedel@gmail.com>",
-  "license": "GPL-2.0",
+  "license": "GPL-3.0",
   "dependencies": {
     "@angular/common": "^2.0.0-rc.6",
     "@angular/compiler": "^2.0.0-rc.6",
