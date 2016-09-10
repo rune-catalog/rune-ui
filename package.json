@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "typings install",
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\"",
+    "start": "tsc && node-sass styles.scss styles.css && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run sass:w\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typings": "typings",
     "lite": "lite-server",
+    "sass:w": "node-sass -w styles.scss styles.css",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
   },
@@ -29,6 +30,7 @@
   "devDependencies": {
     "concurrently": "^2.2.0",
     "lite-server": "^2.2.2",
+    "node-sass": "^3.9.3",
     "typescript": "^1.8.10",
     "typings": "^1.3.3"
   }
