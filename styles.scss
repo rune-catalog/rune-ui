@@ -27,14 +27,45 @@ rune-header {
   display: block;
   height: $dimen-row-height;
 
-  .controls {
-    float: right;
+  h1 {
+    float: left;
+    margin-left: 24px;
+    margin-top: 20px;
   }
 
   .divider {
     border-left: 1px solid $color-gray-light;
-    display: block;
+    float: right;
     height: 70px;
+    margin: 9px 0;
     width: 1px;
   }
+
+  a {
+    float: right;
+    margin: 20px 12px;
+  }
+}
+
+// Icons
+
+i.icon {
+  background-image: url('static/img/sprites.svg');
+  background-repeat: no-repeat;
+  background-size: 1200%;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+.icon-add {
+  background-position: 0 0;
+}
+
+.icon-search {
+  background-position: 0 9.1%;
+}
+
+.icon-menu {
+  background-position: 0 18.2%;
 }
