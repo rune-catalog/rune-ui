@@ -4,10 +4,13 @@ $color-gray-light:  #808080;
 $color-gold-light:  #ffb137;
 $color-gold-dark:   #b27514;
 
-$dimen-row-height: 88px;
+$dimen-min-width: 320px;
+$dimen-row-height: 44px; // TODO ems
+$dimen-index-width: 7.5vw;
+$dim-index-height: 7.5vw;
 
 // Reset
-body, p, h1 {
+body, p, h1, ol, li {
   margin: 0;
   padding: 0;
 }
@@ -15,35 +18,96 @@ body, p, h1 {
 body {
   background-color: $color-gray-medium;
   color: white;
+  font-size: 16px;
+  min-width: $dimen-min-width;
 }
 
-h1 {
-  font-size: 48px;
+my-app {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 rune-header {
   background-color: $color-gray-dark;
   box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.333);
-  display: block;
+  // display: block;
   height: $dimen-row-height;
 
-  h1 {
-    float: left;
-    margin-left: 24px;
-    margin-top: 20px;
+  header {
+    display: table;
+
+    > * {
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
 
-  .divider {
+  h1 {
+    margin-left: 1em;
+  }
+
+  .expando {
+    width: 100%;
+  }
+
+  .divider:before {
     border-left: 1px solid $color-gray-light;
-    float: right;
-    height: 70px;
-    margin: 9px 0;
-    width: 1px;
+    content: '';
+    display: inline-block;
+    height: 65%;
   }
 
   a {
-    float: right;
-    margin: 20px 12px;
+    padding: 0 1em;
+  }
+}
+
+.rune-content {
+  display: flex;
+  flex-grow: 1;
+}
+
+.rune-inner-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.scroll-cell {
+  display: flex;
+  min-height: -webkit-min-content;
+}
+
+.tall {
+  height: 200vh;
+}
+
+rune-index {
+  border: 1px solid $color-gold-light;
+  width: $dimen-index-width;
+
+  ol {
+    list-style-type: none;
+  }
+
+  li {
+    font-size: 5vw;
+    height: $dim-index-height;
+    text-align: center;
+
+    &:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    &:nth-child(odd) {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 }
 
@@ -54,8 +118,8 @@ i.icon {
   background-repeat: no-repeat;
   background-size: 1200%;
   display: inline-block;
-  height: 48px;
-  width: 48px;
+  height: 1em;
+  width: 1em;
 }
 
 .icon-add {
