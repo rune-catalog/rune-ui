@@ -41,36 +41,26 @@ my-app {
 }
 
 rune-header {
+  align-items: center;
   background-color: $color-gray-dark;
   box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.333);
+  display: flex;
   height: $dim-row-height;
 
-  header {
-    display: table;
-
-    > * {
-      display: table-cell;
-      vertical-align: middle;
-    }
-  }
-
   h1 {
-    margin-left: 1em;
-  }
-
-  .expando {
-    width: 100%;
+    flex: 1;
+    margin-left: 2 * $dim-whitespace;;
   }
 
   .divider:before {
     border-left: 1px solid $color-gray-light;
     content: '';
-    display: inline-block;
     height: 65%;
   }
 
-  a {
-    padding: 0 1em;
+  a,
+  .divider {
+    padding-right: 1em;
   }
 }
 
