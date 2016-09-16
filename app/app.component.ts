@@ -5,11 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <rune-header></rune-header>
     <div class="rune-content">
-      <div class="rune-inner-content">
-        <div class="scroll-cell">
-          <div class="tall">Very tall div</div>
-        </div>
-      </div>
+      <card-list></card-list>
       <rune-index></rune-index>
     </div>`
 })
