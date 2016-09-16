@@ -4,15 +4,21 @@ $color-gray-light:  #808080;
 $color-gold-light:  #ffb137;
 $color-gold-dark:   #b27514;
 
-$dimen-min-width: 320px;
-$dimen-row-height: 44px; // TODO ems
+$dim-min-width: 320px;
+$dim-row-height: 2.75em; // 44px@100%
 $dimen-index-width: 7.5vw;
+$dim-whitespace: 2.5vw; // 8px@320
 $dim-index-height: 7.5vw;
 
 // Reset
-body, p, h1, ol, li {
+body, p, h1, h2, h3, ol, li {
   margin: 0;
   padding: 0;
+}
+
+html {
+  min-height: $dim-min-width;
+  min-width: $dim-min-width;
 }
 
 body {
@@ -20,7 +26,6 @@ body {
   color: white;
   font-size: 16px;
   overflow: hidden;;
-  min-width: $dimen-min-width;
 }
 
 my-app {
@@ -38,7 +43,7 @@ my-app {
 rune-header {
   background-color: $color-gray-dark;
   box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.333);
-  height: $dimen-row-height;
+  height: $dim-row-height;
 
   header {
     display: table;
@@ -101,6 +106,27 @@ rune-index {
 card-list {
   flex: 1;
   overflow: auto;
+  padding-left: $dim-whitespace;
+}
+
+card-list-item {
+  align-items: center;
+  border-bottom: 1px solid $color-gray-light;
+  display: flex;
+  height: $dim-row-height;
+  margin-right: 2 * $dim-whitespace;
+
+  h3 {
+    flex: 1;
+  }
+
+  span.Black {
+    background: $color-gray-dark;
+    border: 2px solid white;
+    border-radius: 50%;
+    height: 1em;
+    width: 1em;
+  }
 }
 
 // Icons

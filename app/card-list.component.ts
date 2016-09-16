@@ -3,9 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'card-list',
   template: `
-    <ol>
-      <li *ngFor="let card of cards">{{ card.name }}</li>
-    </ol>
+      <card-list-item *ngFor="let card of cards" [card]="card"></card-list-item>
     `
 })
 export class CardListComponent {
@@ -13,12 +11,16 @@ export class CardListComponent {
 
   constructor() {
     this.cards = [ ];
-    for (let i = 0; i < 15000; i += 1) {
-      this.cards.push({ name: i + '' });
+    for (let i = 0; i < 150; i += 1) {
+      this.cards.push({
+        name: i + '',
+        colors: [ "Black" ]
+      });
     }
   }
 }
 
-class Card {
+export class Card {
   name: string;
+  colors: Array<string>;
 }

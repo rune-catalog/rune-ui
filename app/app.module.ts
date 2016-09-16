@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
 import { IndexComponent } from './index.component';
 import { CardListComponent } from './card-list.component';
+import { CardListItemComponent } from './card-list-item.component';
 
 @NgModule({
   imports: [ BrowserModule ],
@@ -12,7 +13,8 @@ import { CardListComponent } from './card-list.component';
     AppComponent,
     HeaderComponent,
     IndexComponent,
-    CardListComponent
+    CardListComponent,
+    CardListItemComponent
   ],
   bootstrap: [ AppComponent ]
 })
