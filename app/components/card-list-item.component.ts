@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Card } from './card-list.component';
-import { SelectedCardService } from './selected-card.service';
+
+import { Card } from '../model/card';
+import { SelectedCardService } from '../services/selected-card.service';
 
 @Component({
   selector: 'card-list-item',

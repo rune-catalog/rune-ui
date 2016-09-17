@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { CardsService } from './cards.service';
+import { Card } from '../model/card';
+import { CardsService } from '../services/cards.service';
 
 @Component({
   selector: 'card-list',
@@ -15,10 +16,4 @@ export class CardListComponent {
   constructor(cardsService: CardsService) {
     this.cards = cardsService.cards;
   }
-}
-
-export class Card {
-  name: string;
-  colors: Array<string>;
-  text: string;
 }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "typings install",
-    "start": "tsc && node-sass styles.scss styles.css && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run sass:w\"",
+    "start": "tsc && node-sass styles/rune.scss styles.css && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run sass:w\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typings": "typings",
     "lite": "lite-server",

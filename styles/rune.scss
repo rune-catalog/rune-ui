@@ -1,3 +1,6 @@
+@import 'reset';
+@import 'icons';
+
 $color-gray-dark:   #111;
 $color-gray-medium: #4e4e4e;
 $color-gray-light:  #808080;
@@ -9,12 +12,6 @@ $dim-row-height: 2.75em; // 44px@100%
 $dimen-index-width: 7.5vw;
 $dim-whitespace: 2.5vw; // 8px@320
 $dim-index-height: 7.5vw;
-
-// Reset
-body, p, h1, h2, h3, ol, li {
-  margin: 0;
-  padding: 0;
-}
 
 html {
   min-height: $dim-min-width;
@@ -117,27 +114,4 @@ card-list-item {
     height: 1em;
     width: 1em;
   }
-}
-
-// Icons
-
-i.icon {
-  background-image: url('static/img/sprites.svg');
-  background-repeat: no-repeat;
-  background-size: 1200%;
-  display: inline-block;
-  height: 1em;
-  width: 1em;
-}
-
-.icon-add {
-  background-position: 0 0;
-}
-
-.icon-search {
-  background-position: 0 9.1%;
-}
-
-.icon-menu {
-  background-position: 0 18.2%;
 }
