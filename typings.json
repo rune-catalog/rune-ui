@@ -1,6 +1,8 @@
 {
   "name": "rune-ui",
-  "dependencies": {},
+  "dependencies": {
+    "flux": "registry:npm/flux#2.1.1+20160601175240"
+  },
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160725163759"
   }

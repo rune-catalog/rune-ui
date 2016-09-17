@@ -5,11 +5,9 @@ import { SelectedCardService } from './selected-card.service';
 @Component({
   selector: 'card-list-item',
   template: `
-    <div [ngSwitch]="isSelected">
-      <card-expanded *ngSwitchCase="true" [card]="card"></card-expanded>
-      <card-collapsed *ngSwitchDefault [card]="card" (click)="selectCard()">
-      </card-collapsed>
-    </div>`
+      <card-expanded *ngIf="isSelected" [card]="card"></card-expanded>
+      <card-collapsed *ngIf="!isSelected" [card]="card" (click)="selectCard()">
+      </card-collapsed>`
 })
 export class CardListItemComponent {
   @Input() public card: Card;
