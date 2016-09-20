@@ -16,7 +16,9 @@
       '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
 
       // Lib
-      rxjs: 'npm:rxjs'
+      rxjs: 'npm:rxjs',
+      'flux-lite': 'npm:flux-lite/dist/flux-lite.umd.js',
+      eventemitter3: 'npm:eventemitter3/index.js'
     },
 
     packages: {

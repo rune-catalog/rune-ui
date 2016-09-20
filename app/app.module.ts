@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OpaqueToken } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // Import components
@@ -14,6 +14,12 @@ import { CardExpandedComponent } from './components/card-expanded.component';
 import { CardsService } from './services/cards.service';
 import { SelectedCardService } from './services/selected-card.service';
 
+// Import stores
+import { SelectedCardStore } from './stores/selected-card.store';
+
+// import { Dispatcher } from 'flux-lite';
+import { Dispatcher } from 'flux-lite';
+
 @NgModule({
   imports: [ BrowserModule ],
   declarations: [
@@ -27,7 +33,9 @@ import { SelectedCardService } from './services/selected-card.service';
   ],
   providers: [
     CardsService,
-    SelectedCardService
+    SelectedCardService,
+    Dispatcher,
+    SelectedCardStore
   ],
   bootstrap: [ AppComponent ]
 })

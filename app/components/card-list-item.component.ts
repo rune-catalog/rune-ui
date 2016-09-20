@@ -1,25 +1,30 @@
 import { Component, Input } from '@angular/core';
+import { Dispatcher } from 'flux-lite';
 
+import { Action, TYPE_SELECTED_CARD } from '../stores/action';
 import { Card } from '../model/card';
-import { SelectedCardService } from '../services/selected-card.service';
 
 @Component({
   selector: 'card-list-item',
   template: `
       <card-expanded *ngIf="isSelected" [card]="card"></card-expanded>
-      <card-collapsed *ngIf="!isSelected" [card]="card" (click)="selectCard()">
+      <card-collapsed *ngIf="!isSelected" [card]="card" (click)="onClick()">
       </card-collapsed>`
 })
 export class CardListItemComponent {
   @Input() public card: Card;
+  @Input() public selectedCard: string;
 
-  constructor(private selectedCardService: SelectedCardService) { }
+  constructor(private dispatcher: Dispatcher<Action>) { }
 
   private get isSelected(): boolean {
-    return this.selectedCardService.isSelected(this.card);
+    return this.card.name === this.selectedCard;
   }
 
-  private selectCard(): void {
-    this.selectedCardService.selectCard(this.card);
+  private onClick(): void {
+    this.dispatcher.dispatch({
+      type: TYPE_SELECTED_CARD,
+      name: this.card.name
+    });
   }
 }

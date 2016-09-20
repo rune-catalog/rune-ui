@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectedCardStore } from '../stores/selected-card.store';
 
 @Component({
   selector: 'my-app',
@@ -9,4 +10,6 @@ import { Component } from '@angular/core';
       <rune-index></rune-index>
     </div>`
 })
-export class AppComponent { }
+export class AppComponent {
+  constructor(private selectedCardStore: SelectedCardStore) { }
+}

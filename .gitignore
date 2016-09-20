@@ -1,6 +1,5 @@
 /node_modules/
 /typings/
-/app/*.js
 *.swp
 styles.css
 .DS_Store
