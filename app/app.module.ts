@@ -9,13 +9,12 @@ import { CardListComponent } from './components/card-list.component';
 import { CardListItemComponent } from './components/card-list-item.component';
 import { CardCollapsedComponent } from './components/card-collapsed.component';
 import { CardExpandedComponent } from './components/card-expanded.component';
-
-// Import services
-import { CardsService } from './services/cards.service';
-import { SelectedCardService } from './services/selected-card.service';
+import { LazyScrollDirective } from './components/lazy-scroll.component';
 
 // Import stores
 import { SelectedCardStore } from './stores/selected-card.store';
+import { ScrollPositionStore } from './stores/scroll-position.store';
+import { CardListStore } from './stores/card-list.store';
 
 // import { Dispatcher } from 'flux-lite';
 import { Dispatcher } from 'flux-lite';
@@ -29,13 +28,14 @@ import { Dispatcher } from 'flux-lite';
     CardListComponent,
     CardListItemComponent,
     CardCollapsedComponent,
-    CardExpandedComponent
+    CardExpandedComponent,
+    LazyScrollDirective
   ],
   providers: [
-    CardsService,
-    SelectedCardService,
     Dispatcher,
-    SelectedCardStore
+    SelectedCardStore,
+    ScrollPositionStore,
+    CardListStore
   ],
   bootstrap: [ AppComponent ]
 })

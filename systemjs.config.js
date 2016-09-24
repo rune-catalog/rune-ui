@@ -18,7 +18,7 @@
       // Lib
       rxjs: 'npm:rxjs',
       'flux-lite': 'npm:flux-lite/dist/flux-lite.umd.js',
-      eventemitter3: 'npm:eventemitter3/index.js'
+      ramda: 'npm:ramda/dist/ramda.js'
     },
 
     packages: {

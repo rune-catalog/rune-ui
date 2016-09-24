@@ -13,10 +13,14 @@ var IndexComponent = (function () {
     function IndexComponent() {
         this.letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], IndexComponent.prototype, "index", void 0);
     IndexComponent = __decorate([
         core_1.Component({
             selector: 'rune-index',
-            template: "\n    <ol>\n      <li *ngFor=\"let letter of letters\">{{ letter }}</li>\n    </ol>"
+            template: "\n    <ol>\n      <li *ngFor=\"let letter of letters\" [ngClass]=\"{ active: letter === index }\">{{ letter }}</li>\n    </ol>"
         }), 
         __metadata('design:paramtypes', [])
     ], IndexComponent);

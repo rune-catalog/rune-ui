@@ -1,6 +1,8 @@
 {
   "name": "rune-ui",
-  "dependencies": {},
+  "dependencies": {
+    "ramda": "registry:npm/ramda#0.21.0+20160531162943"
+  },
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160725163759",
     "eventemitter3": "registry:dt/eventemitter3#1.1.1+20151208234524"
