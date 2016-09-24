@@ -8,7 +8,7 @@ import * as R from 'ramda';
 @Component({
   selector: 'card-list',
   template: `
-      <card-list-item #item *ngFor="let card of cards" [card]="card"></card-list-item>
+      <card-list-item #item class="tk-merriweather" *ngFor="let card of cards" [card]="card"></card-list-item>
     `
 })
 export class CardListComponent implements OnChanges {
@@ -33,11 +33,7 @@ export class CardListComponent implements OnChanges {
   }
 
   ngOnChanges(changes): void {
-    if (!this.listItems) {
-      return;
-    }
-
-    if (!changes['index']) {
+    if (!this.listItems || !changes['index']) {
       return;
     }
     this.scrollTo(changes['index'].currentValue);

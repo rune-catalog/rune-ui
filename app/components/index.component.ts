@@ -6,7 +6,7 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'rune-index',
   template: `
-    <ol>
+    <ol class="tk-myriad-pro">
       <li
         *ngFor="let letter of letters"
         [ngClass]="{ active: letter === index }"
