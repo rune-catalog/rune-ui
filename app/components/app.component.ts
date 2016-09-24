@@ -9,7 +9,7 @@ import { Card } from '../model/card';
   template: `
     <rune-header></rune-header>
     <div class="rune-content">
-      <card-list [cards]="cards"></card-list>
+      <card-list [cards]="cards" [index]="topCardName"></card-list>
       <rune-index [index]="topCardName"></rune-index>
     </div>`
 })

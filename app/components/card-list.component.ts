@@ -1,4 +1,4 @@
-import { Component, Input, HostListener, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, Input, HostListener, ViewChildren, QueryList, ElementRef, OnChanges } from '@angular/core';
 import { CardListItemComponent } from './card-list-item.component';
 import { Dispatcher } from 'flux-lite';
 import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
@@ -11,8 +11,9 @@ import * as R from 'ramda';
       <card-list-item #item *ngFor="let card of cards" [card]="card"></card-list-item>
     `
 })
-export class CardListComponent {
+export class CardListComponent implements OnChanges {
   @Input() cards: Array<Card>;
+  @Input() index: string;
   @ViewChildren(CardListItemComponent) listItems: QueryList<CardListItemComponent>;
 
   constructor(private el: ElementRef, private dispatcher: Dispatcher<Action>) { }
@@ -29,5 +30,29 @@ export class CardListComponent {
       type: TYPE_CARD_SCROLL_POSITION,
       cardName: topmostCard.card.name
     });
+  }
+
+  ngOnChanges(changes): void {
+    if (!this.listItems) {
+      return;
+    }
+
+    if (!changes['index']) {
+      return;
+    }
+    this.scrollTo(changes['index'].currentValue);
+  }
+
+  private scrollTo(letter: string): void {
+    let firstItemWithLetter = R.find(i => {
+      return i.card.name[0].toLowerCase() === letter;
+    }, this.listItems.toArray());
+
+    if (firstItemWithLetter) {
+      let bb: ClientRect = this.el.nativeElement.getBoundingClientRect();
+      let cbb: ClientRect = firstItemWithLetter.boundingBox;
+
+      this.el.nativeElement.scrollTop += cbb.top - bb.top;
+    }
   }
 }
