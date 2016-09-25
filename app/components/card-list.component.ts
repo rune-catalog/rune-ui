@@ -8,12 +8,18 @@ import * as R from 'ramda';
 @Component({
   selector: 'card-list',
   template: `
-      <card-list-item #item class="tk-merriweather" *ngFor="let card of cards" [card]="card"></card-list-item>
+      <card-list-item
+        #item
+        class="tk-merriweather"
+        *ngFor="let card of cards"
+        [card]="card"
+        [selectedCard]="selectedCard"></card-list-item>
     `
 })
 export class CardListComponent implements OnChanges {
   @Input() cards: Array<Card>;
   @Input() index: string;
+  @Input() selectedCard: string;
   @ViewChildren(CardListItemComponent) listItems: QueryList<CardListItemComponent>;
 
   constructor(private el: ElementRef, private dispatcher: Dispatcher<Action>) { }

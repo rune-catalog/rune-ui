@@ -101,21 +101,21 @@ card-list {
 }
 
 card-list-item {
-  align-items: center;
   border-bottom: 1px solid $color-gray-light;
-  display: flex;
-  height: $dim-row-height;
+  display: block;
   margin-right: 2 * $dim-whitespace;
+  padding: .5em 0;
+}
+
+card-collapsed {
+  align-items: center;
+  display: flex;
 
   h3 {
     flex: 1;
   }
 
-  span.Black {
-    background: $color-gray-dark;
-    border: 2px solid white;
-    border-radius: 50%;
-    height: 1em;
-    width: 1em;
+  i {
+    font-size: 1.17em;
   }
 }
