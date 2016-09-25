@@ -1,0 +1,67 @@
+@import 'colors';
+
+card-expanded {
+  header {
+    align-items: center;
+    background: black;
+    display: flex;
+  }
+
+  h2 {
+    flex: 1;
+    padding: .2em;
+  }
+
+  .card-details {
+    background: rgba(0, 0, 0, .6);
+    box-sizing: border-box;
+    width: 96%;
+  }
+
+  .card-image {
+    box-sizing: border-box;
+    height: 200px;
+    padding: 1em .5em;
+  }
+
+  .row {
+    align-items: center;
+    display: flex;
+  }
+
+  .card-type {
+    flex: 1;
+  }
+
+  .card-text {
+    white-space: pre-wrap;
+  }
+
+  .metadata {
+    background: black;
+    display: flex;
+    height: 3em;
+  }
+
+  .collectors-number {
+    color: $color-gray-dark;
+    font-size: 18px;
+  }
+
+  .collection {
+    background: black;
+    display: flex;
+  }
+
+  select {
+    height: 3em;
+  }
+
+  select.collection {
+    flex: 1;
+  }
+
+  select.quantity {
+    width: 4em;
+  }
+}

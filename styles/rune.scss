@@ -1,11 +1,8 @@
 @import 'reset';
+@import 'colors';
 @import 'icons';
+@import 'card';
 
-$color-gray-dark:   #111;
-$color-gray-medium: #4e4e4e;
-$color-gray-light:  #808080;
-$color-gold-light:  #ffb137;
-$color-gold-dark:   #b27514;
 
 $dim-min-width: 320px;
 $dim-row-height: 2.75em; // 44px@100%
