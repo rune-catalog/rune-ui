@@ -5,3 +5,4 @@ styles.css
 .DS_Store
 /aot/
 *.js.map
+/dist/
