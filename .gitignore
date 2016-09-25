@@ -3,3 +3,5 @@
 *.swp
 styles.css
 .DS_Store
+/aot/
+*.js.map

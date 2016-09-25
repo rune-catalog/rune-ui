@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Dispatcher, FluxReduceStore } from 'flux-lite';
+import { FluxReduceStore } from 'flux-lite';
+import { DispatcherService } from '../services/dispatcher.service';
 import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
 
 @Injectable()
 export class ScrollPositionStore extends FluxReduceStore<string> {
 
-  constructor(dispatcher: Dispatcher<Action>) {
+  constructor(dispatcher: DispatcherService) {
     super(dispatcher);
   }
 

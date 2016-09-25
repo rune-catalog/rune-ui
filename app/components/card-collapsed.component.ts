@@ -9,7 +9,7 @@ import * as R from 'ramda';
 export class CardCollapsedComponent {
   @Input() card: Card;
 
-  private get klass(): Array<string> {
+  get klass(): Array<string> {
     return R.concat([ 'icon', 'mana-icon' ], this.card.colors || [ ]);
   }
 }

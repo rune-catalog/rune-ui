@@ -1,7 +1,6 @@
-import { Dispatcher } from 'flux-lite';
+import { DispatcherService } from '../services/dispatcher.service';
 import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
 import { Component, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'rune-index',
@@ -15,9 +14,9 @@ import { NgFor } from '@angular/common';
 })
 export class IndexComponent {
   @Input() index: string;
-  private letters: Array<string> = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
+  letters: Array<string> = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
 
-  constructor(private dispatcher: Dispatcher<Action>) { }
+  constructor(private dispatcher: DispatcherService) { }
 
   private onClick(letter: string): void {
     this.dispatcher.dispatch({

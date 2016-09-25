@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { FluxReduceStore, Dispatcher } from 'flux-lite';
+import { FluxReduceStore } from 'flux-lite';
+import { DispatcherService } from '../services/dispatcher.service';
 import { Action, TYPE_SELECTED_CARD } from './action';
 
 @Injectable()
 export class SelectedCardStore extends FluxReduceStore<string> {
 
-  constructor(dispatcher: Dispatcher<Action>) {
+  constructor(dispatcher: DispatcherService) {
     super(dispatcher);
   }
 

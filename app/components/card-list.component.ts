@@ -1,6 +1,6 @@
 import { Component, Input, HostListener, ViewChildren, QueryList, ElementRef, OnChanges } from '@angular/core';
 import { CardListItemComponent } from './card-list-item.component';
-import { Dispatcher } from 'flux-lite';
+import { DispatcherService } from '../services/dispatcher.service';
 import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
 import { Card } from '../model/card';
 import * as R from 'ramda';
@@ -22,9 +22,9 @@ export class CardListComponent implements OnChanges {
   @Input() selectedCard: string;
   @ViewChildren(CardListItemComponent) listItems: QueryList<CardListItemComponent>;
 
-  constructor(private el: ElementRef, private dispatcher: Dispatcher<Action>) { }
+  constructor(private el: ElementRef, private dispatcher: DispatcherService) { }
 
-  @HostListener('scroll') private onScroll(): void {
+  @HostListener('scroll') onScroll(): void {
     let bb: ClientRect = this.el.nativeElement.getBoundingClientRect();
 
     let topmostCard = R.find(i => {

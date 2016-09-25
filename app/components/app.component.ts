@@ -14,9 +14,9 @@ import { Card } from '../model/card';
     </div>`
 })
 export class AppComponent implements DoCheck {
-  private selectedCard: string;
-  private topCardName: string;
-  private cards: Array<Card>;
+  selectedCard: string;
+  topCardName: string;
+  cards: Array<Card>;
 
   constructor(
       private selectedCardStore: SelectedCardStore,

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Dispatcher, FluxReduceStore } from 'flux-lite';
+import { FluxReduceStore } from 'flux-lite';
+import { DispatcherService } from '../services/dispatcher.service';
 import { Action } from '../stores/action';
 import { Card } from '../model/card';
 import * as R from 'ramda';
@@ -7,7 +8,7 @@ import * as R from 'ramda';
 @Injectable()
 export class CardListStore extends FluxReduceStore<Array<Card>> {
 
-  constructor(dispatcher: Dispatcher<Action>) {
+  constructor(dispatcher: DispatcherService) {
     super(dispatcher);
   }
 

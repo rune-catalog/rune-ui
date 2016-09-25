@@ -16,8 +16,8 @@ import { SelectedCardStore } from './stores/selected-card.store';
 import { ScrollPositionStore } from './stores/scroll-position.store';
 import { CardListStore } from './stores/card-list.store';
 
-// import { Dispatcher } from 'flux-lite';
-import { Dispatcher } from 'flux-lite';
+// Import services
+import { DispatcherService } from './services/dispatcher.service';
 
 @NgModule({
   imports: [ BrowserModule ],
@@ -32,7 +32,7 @@ import { Dispatcher } from 'flux-lite';
     LazyScrollDirective
   ],
   providers: [
-    Dispatcher,
+    DispatcherService,
     SelectedCardStore,
     ScrollPositionStore,
     CardListStore
