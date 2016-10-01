@@ -1,7 +1,5 @@
 (function(global) {
   System.config({
-    transpiler: 'typescript',
-
     paths: {
       'npm:': 'node_modules/'
     },
@@ -9,9 +7,6 @@
     map: {
       // App
       app: 'app',
-
-      // Typescript
-      typescript: 'npm:typescript/lib/typescript.js',
 
       // Angular
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -22,10 +17,8 @@
 
       // Lib
       rxjs: 'npm:rxjs',
-      'flux-lite': 'npm:flux-lite',
-      ramda: 'npm:ramda/dist/ramda.js',
-      eventemitter3: 'npm:eventemitter3/index.js',
-      'es6-error': 'npm:es6-error/lib/index.js'
+      'flux-lite': 'npm:flux-lite/dist/flux-lite.umd.js',
+      ramda: 'npm:ramda/dist/ramda.js'
     },
 
     packages: {
@@ -34,10 +27,6 @@
         defaultExtension: 'js'
       },
       rxjs: {
-        defaultExtension: 'js'
-      },
-      'flux-lite': {
-        main: 'index.js',
         defaultExtension: 'js'
       }
     }
