@@ -13,12 +13,8 @@ export default {
     commonjs({
       include: [
         'node_modules/rxjs/**',
-        'node_modules/flux-lite/**',
         'node_modules/ramda/**'
-      ],
-      namedExports: {
-        'node_modules/flux-lite/index.js': [ 'FluxReduceStore', 'Dispatcher' ]
-      }
+      ]
     }),
     // uglify()
   ]
