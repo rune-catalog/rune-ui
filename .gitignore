@@ -6,3 +6,4 @@ styles.css
 /aot/
 *.js.map
 /dist/
+npm-debug.log
