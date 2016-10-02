@@ -13,9 +13,14 @@ export default {
     commonjs({
       include: [
         'node_modules/rxjs/**',
-        'node_modules/ramda/**'
-      ]
+        'node_modules/ramda/**',
+        'node_modules/eventemitter3/**',
+        'node_modules/es6-error/**'
+      ],
+      namedExports: {
+        'node_modules/eventemitter3/index.js': [ 'EventEmitter' ]
+      }
     }),
-    // uglify()
+    uglify()
   ]
 }
