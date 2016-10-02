@@ -10,6 +10,7 @@ import { CardListItemComponent } from './components/card-list-item.component';
 import { CardCollapsedComponent } from './components/card-collapsed.component';
 import { CardExpandedComponent } from './components/card-expanded.component';
 import { LazyScrollDirective } from './components/lazy-scroll.component';
+import { RuneSpriteComponent } from './components/rune-sprite.component';
 
 // Import stores
 import { SelectedCardStore } from './stores/selected-card.store';
@@ -29,7 +30,8 @@ import { DispatcherService } from './services/dispatcher.service';
     CardListItemComponent,
     CardCollapsedComponent,
     CardExpandedComponent,
-    LazyScrollDirective
+    LazyScrollDirective,
+    RuneSpriteComponent
   ],
   providers: [
     DispatcherService,

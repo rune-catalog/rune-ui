@@ -1,6 +1,5 @@
 @import 'reset';
 @import 'colors';
-@import 'icons';
 @import 'card';
 
 
@@ -112,7 +111,8 @@ card-collapsed {
     flex: 1;
   }
 
-  i {
-    font-size: 1.17em;
+  svg {
+    height: 1.2em;
+    width: 1.2em;
   }
 }
