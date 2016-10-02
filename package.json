@@ -6,7 +6,7 @@
   "repository": "rune-catalog/rune-ui",
   "scripts": {
     "postinstall": "typings install",
-    "start": "tsc && node-sass styles/rune.scss styles.css && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run sass:w\"",
+    "start": "tsc && svg && node-sass styles/rune.scss styles.css && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run sass:w\"",
     "prepublish": "npm run ngc && npm run rollup",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typings": "typings",
@@ -15,7 +15,8 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "ngc": "ngc -p tsconfig-aot.json",
-    "rollup": "rollup -c rollup.js"
+    "rollup": "rollup -c rollup.js",
+    "svg": "rm -f static/img/sprites.svg && svg-sprite --symbol --symbol-dest=static/img --si --ss sprites.svg static/img/*.svg"
   },
   "author": "Sam Noedel <sam.noedel@gmail.com>",
   "license": "GPL-3.0",
@@ -43,6 +44,7 @@
     "rollup-plugin-commonjs": "^5.0.4",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
+    "svg-sprite": "^1.3.6",
     "typescript": "^2.0.3",
     "typings": "^1.4.0"
   }

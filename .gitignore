@@ -7,3 +7,4 @@ styles.css
 *.js.map
 /dist/
 npm-debug.log
+static/img/sprites.svg
