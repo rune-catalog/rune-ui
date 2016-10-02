@@ -1,0 +1,14 @@
+{
+  "server": {
+    "index": "index.dev.html"
+  },
+  "files": [
+    "./**/*.{html,css,js}"
+  ],
+  "watchOptions": {
+    "ignored": "node_modules"
+  },
+  "logLevel": "warn",
+  "browser": "google chrome",
+  "injectChanges": true
+}
