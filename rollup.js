@@ -14,11 +14,11 @@ export default {
       include: [
         'node_modules/rxjs/**',
         'node_modules/ramda/**',
-        'node_modules/eventemitter3/**',
-        'node_modules/es6-error/**'
+        'node_modules/eventemitter3/**'
       ],
       namedExports: {
-        'node_modules/eventemitter3/index.js': [ 'EventEmitter' ]
+        'node_modules/eventemitter3/index.js': [ 'EventEmitter' ],
+        'node_modules/ramda/dist/ramda.js': [ 'sort', 'find', 'concat', 'map' ]
       }
     }),
     uglify()
