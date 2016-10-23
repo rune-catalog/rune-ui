@@ -6,11 +6,10 @@
   "repository": "rune-catalog/rune-ui",
   "scripts": {
     "postinstall": "typings install",
-    "start": "tsc && node-sass styles/rune.scss styles.css && concurrently \"npm run tsc:w\" \"npm run lite\" \"npm run sass:w\"",
+    "start": "tsc && node-sass styles/rune.scss styles.css && concurrently \"npm run tsc:w\" \"npm run bs\" \"npm run sass:w\"",
     "prepublish": "npm run ngc && npm run rollup",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "bs": "browser-sync start -c bs-config.json",
     "typings": "typings",
-    "lite": "lite-server",
     "sass:w": "node-sass -w styles/rune.scss styles.css",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
@@ -37,8 +36,8 @@
   "devDependencies": {
     "@angular/compiler-cli": "^2.1.1",
     "@angular/platform-server": "^2.0.1",
+    "browser-sync": "^2.17.5",
     "concurrently": "^3.1.0",
-    "lite-server": "^2.2.2",
     "node-sass": "^3.10.0",
     "rollup": "^0.36.0",
     "rollup-plugin-commonjs": "^5.0.4",

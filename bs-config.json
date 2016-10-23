@@ -1,5 +1,6 @@
 {
   "server": {
+    "baseDir": ".",
     "index": "index.dev.html"
   },
   "files": [
@@ -8,7 +9,10 @@
   "watchOptions": {
     "ignored": "node_modules"
   },
-  "logLevel": "warn",
-  "browser": "google chrome",
-  "injectChanges": true
+  "logLevel": "info",
+  "injectChanges": true,
+  "ui": false,
+  "open": false,
+  "port": 3000,
+  "localOnly": true
 }
