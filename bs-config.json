@@ -13,6 +13,5 @@
   "injectChanges": true,
   "ui": false,
   "open": false,
-  "port": 3000,
-  "localOnly": true
+  "port": 3000
 }
