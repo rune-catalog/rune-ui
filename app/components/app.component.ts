@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { DispatcherService } from '../services/dispatcher.service';
-import { TYPE_CARD_LIST_SET } from '../stores/payload';
+import { TYPE_CARD_LIST_SET, TYPE_COLLECTION_UPDATE } from '../stores/payload';
 import { SelectedCardStore } from '../stores/selected-card.store';
 import { ScrollPositionStore } from '../stores/scroll-position.store';
 import { CardListStore } from '../stores/card-list.store';

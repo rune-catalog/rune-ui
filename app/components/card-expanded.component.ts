@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Card } from '../model/card';
+import { CollectionStore, Collection } from '../stores/collection.store';
+import { DispatcherService } from '../services/dispatcher.service';
+import { TYPE_COLLECTION_UPDATE } from '../stores/payload';
+import * as R from 'ramda';
 
 @Component({
   selector: 'card-expanded',
@@ -21,19 +25,31 @@ import { Card } from '../model/card';
       </div>
       <div class="collection">
         <select class="collection">
-          <option>Trade Binder</option>
+          <option *ngFor="let collection of collections">{{ collection.name }}</option>
         </select>
         <select class="quantity">
-          <option>99</option>
+          <option *ngFor="let val of quantities" value="{{ val }}">{{ val }}</option>
         </select>
       </div>
     </section>
     `
 })
-export class CardExpandedComponent {
+export class CardExpandedComponent implements OnInit {
   @Input() card: Card;
+  collections: Array<Collection>;
+
+  constructor(private dispatcher: DispatcherService, private collectionStore: CollectionStore) { }
 
   get klass(): Array<string> {
     return [ 'icon', 'mana-icon', this.card.colors ];
+  }
+
+  get quantities(): Array<number> {
+    return R.range(0, 26);
+  }
+
+  ngOnInit() {
+    this.dispatcher.dispatch({ type: TYPE_COLLECTION_UPDATE })
+      .then(() => this.collections = this.collectionStore.state);
   }
 }

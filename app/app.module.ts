@@ -17,11 +17,13 @@ import { RuneSpriteComponent } from './components/rune-sprite.component';
 import { SelectedCardStore } from './stores/selected-card.store';
 import { ScrollPositionStore } from './stores/scroll-position.store';
 import { CardListStore } from './stores/card-list.store';
+import { CollectionStore } from './stores/collection.store';
 
 // Import services
 import { DispatcherService } from './services/dispatcher.service';
 import { CardSetService } from './services/card-set.service';
 import { CardService } from './services/card.service';
+import { CollectionService } from './services/collection.service';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import { CardService } from './services/card.service';
     CardService,
     SelectedCardStore,
     ScrollPositionStore,
-    CardListStore
+    CardListStore,
+    CollectionService,
+    CollectionStore
   ],
   bootstrap: [ AppComponent ]
 })
