@@ -1,7 +1,7 @@
 import { Component, Input, HostListener, ViewChildren, QueryList, ElementRef, OnChanges } from '@angular/core';
 import { CardListItemComponent } from './card-list-item.component';
 import { DispatcherService } from '../services/dispatcher.service';
-import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
+import { TYPE_CARD_SCROLL_POSITION } from '../stores/payload';
 import { Card } from '../model/card';
 import * as R from 'ramda';
 
@@ -11,7 +11,7 @@ import * as R from 'ramda';
       <card-list-item
         #item
         class="tk-merriweather"
-        *ngFor="let card of cards.cards"
+        *ngFor="let card of cards"
         [card]="card"
         [selectedCard]="selectedCard"></card-list-item>
     `

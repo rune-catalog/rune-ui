@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FluxStore } from 'flux-lite';
+import { FluxStore, Action } from 'flux-lite';
 import { DispatcherService } from '../services/dispatcher.service';
-import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
+import { Payload, TYPE_CARD_SCROLL_POSITION } from '../stores/payload';
 
 @Injectable()
 export class ScrollPositionStore extends FluxStore<string> {
@@ -28,9 +28,9 @@ export class ScrollPositionStore extends FluxStore<string> {
     return null;
   }
 
-  reduce(state: string, action: Action): Promise<string> {
-    if (action.type === TYPE_CARD_SCROLL_POSITION) {
-      return Promise.resolve(action['cardName']);
+  reduce(state: string, action: Action<Payload>): Promise<string> {
+    if (action.payload.type === TYPE_CARD_SCROLL_POSITION) {
+      return Promise.resolve(action.payload['cardName']);
     }
     return Promise.resolve(state);
   }

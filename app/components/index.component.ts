@@ -1,5 +1,5 @@
 import { DispatcherService } from '../services/dispatcher.service';
-import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
+import { Payload, TYPE_CARD_SCROLL_POSITION } from '../stores/payload';
 import { Component, Input } from '@angular/core';
 
 @Component({

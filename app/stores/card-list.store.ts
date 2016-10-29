@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FluxStore } from 'flux-lite';
+import { FluxStore, Action } from 'flux-lite';
 import { DispatcherService } from '../services/dispatcher.service';
-import { Action, TYPE_CARD_LIST_SET } from '../stores/action';
+import { Payload, TYPE_CARD_LIST_SET } from '../stores/payload';
 import { Card } from '../model/card';
 import { CardSetService } from '../services/card-set.service';
 import * as R from 'ramda';
@@ -17,10 +17,10 @@ export class CardListStore extends FluxStore<Array<Card>> {
     return [ ];
   }
 
-  reduce(state: Array<Card>, action: Action): Promise<Array<Card>> {
-    switch (action.type) {
+  reduce(state: Array<Card>, action: Action<Payload>): Promise<Array<Card>> {
+    switch (action.payload.type) {
       case TYPE_CARD_LIST_SET:
-        return this.setService.getSet(action['setName'])
+        return this.setService.getSet(action.payload['setName'])
           .then(set => R.map(apiCard => <any>({
             name: apiCard.name, colors: apiCard.colors
           }), set.cards));

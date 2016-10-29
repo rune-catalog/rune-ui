@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef } from '@angular/core';
 
-import { Action, TYPE_SELECTED_CARD } from '../stores/action';
+import { TYPE_SELECTED_CARD } from '../stores/payload';
 import { DispatcherService } from '../services/dispatcher.service';
 import { Card } from '../model/card';
 
