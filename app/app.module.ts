@@ -21,6 +21,7 @@ import { CardListStore } from './stores/card-list.store';
 // Import services
 import { DispatcherService } from './services/dispatcher.service';
 import { CardSetService } from './services/card-set.service';
+import { CardService } from './services/card.service';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { CardSetService } from './services/card-set.service';
   providers: [
     DispatcherService,
     CardSetService,
+    CardService,
     SelectedCardStore,
     ScrollPositionStore,
     CardListStore

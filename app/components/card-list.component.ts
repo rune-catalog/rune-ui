@@ -19,7 +19,7 @@ import * as R from 'ramda';
 export class CardListComponent implements OnChanges {
   @Input() cards: Array<Card>;
   @Input() index: string;
-  @Input() selectedCard: string;
+  @Input() selectedCard: Card;
   @ViewChildren(CardListItemComponent) listItems: QueryList<CardListItemComponent>;
 
   constructor(private el: ElementRef, private dispatcher: DispatcherService) { }

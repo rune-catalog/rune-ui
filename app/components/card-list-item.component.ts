@@ -13,16 +13,16 @@ import { Card } from '../model/card';
 })
 export class CardListItemComponent {
   @Input() public card: Card;
-  @Input() public selectedCard: string;
+  @Input() public selectedCard: Card;
 
   constructor(private dispatcher: DispatcherService, private el: ElementRef) { }
 
-  public get boundingBox(): ClientRect {
+  get boundingBox(): ClientRect {
     return this.el.nativeElement.getBoundingClientRect();
   }
 
   get isSelected(): boolean {
-    return this.card.name === this.selectedCard;
+    return this.selectedCard && this.card.name === this.selectedCard.name;
   }
 
   private onClick(): void {

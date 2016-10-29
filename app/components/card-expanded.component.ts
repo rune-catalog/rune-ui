@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import * as R from 'ramda';
-
 import { Card } from '../model/card';
 
 @Component({
@@ -36,6 +34,6 @@ export class CardExpandedComponent {
   @Input() card: Card;
 
   get klass(): Array<string> {
-    return R.concat([ 'icon', 'mana-icon' ], this.card.colors || [ ]);
+    return [ 'icon', 'mana-icon', this.card.colors ];
   }
 }

@@ -16,7 +16,7 @@ import { Card } from '../model/card';
     </div>`
 })
 export class AppComponent implements DoCheck, OnInit {
-  selectedCard: string;
+  selectedCard: Card;
   topCardName: string;
   cards: Array<Card>;
 
