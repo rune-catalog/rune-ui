@@ -26,25 +26,26 @@ export class CardListStore extends FluxStore<Array<Card>> {
       case TYPE_CARD_LIST_SET:
         return this.getCardList(action);
       case TYPE_SELECTED_CARD:
-        return this.getCardList(action);
+        return this.setSelectedCard(state, action);
       default:
         return Promise.resolve(state);
     }
   }
 
-  private getCardList(action: Action<Payload>): Promise<Array<Card>> {
-      let selectedCardPromise = this.dispatcher.waitFor([ this.selectedCardStore.dispatchToken ], action)
-        .then(() => this.selectedCardStore.state);
-      let cardSetService = this.setService.getSet(action.payload['setName'])
-        .then(set => R.map(apiCard => <any>({
-          name: apiCard.name,
-          colors: apiCard.colors
-        }), set.cards));
-
-      return Promise.all([ selectedCardPromise, cardSetService ])
-        .then(results => {
-          let [ selectedCard, cardSet ] = results;
-          return R.map(card => selectedCard && selectedCard.name == card.name ? selectedCard : card, cardSet);
+  private setSelectedCard(state: Array<Card>, action: Action<Payload>): Promise<Array<Card>> {
+      return this.dispatcher.waitFor([ this.selectedCardStore.dispatchToken ], action)
+        .then(() => {
+          let selectedCard = this.selectedCardStore.state;
+          return R.map(card => selectedCard && selectedCard.name == card.name ? selectedCard : card, state);
         });
+  }
+
+  private getCardList(action: Action<Payload>): Promise<Array<Card>> {
+    return this.setService.getSet(action.payload['setName'])
+      .then(set => R.map(apiCard => <any>({
+        name: apiCard.name,
+        colors: apiCard.colors
+      }), set.cards))
+      .then(set => R.sortBy(R.prop('name'), set));
   }
 }
