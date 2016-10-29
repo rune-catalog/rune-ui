@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { FluxReduceStore } from 'flux-lite';
+import { FluxStore } from 'flux-lite';
 import { DispatcherService } from '../services/dispatcher.service';
 import { Action, TYPE_CARD_SCROLL_POSITION } from '../stores/action';
 
 @Injectable()
-export class ScrollPositionStore extends FluxReduceStore<string> {
+export class ScrollPositionStore extends FluxStore<string> {
 
   constructor(dispatcher: DispatcherService) {
     super(dispatcher);
   }
 
   getCurrentIndex(): string {
-    let state = this.getState();
+    let state = this.state;
     if (state === null) {
       return '#';
     }
 
-    let cardName = this.getState().toLowerCase();
+    let cardName = this.state.toLowerCase();
     if (cardName >= 'a' && cardName <= 'z') {
       return cardName[0];
     }
@@ -28,10 +28,10 @@ export class ScrollPositionStore extends FluxReduceStore<string> {
     return null;
   }
 
-  reduce(state: string, action: Action): string {
+  reduce(state: string, action: Action): Promise<string> {
     if (action.type === TYPE_CARD_SCROLL_POSITION) {
-      return action['cardName'];
+      return Promise.resolve(action['cardName']);
     }
-    return state;
+    return Promise.resolve(state);
   }
 }

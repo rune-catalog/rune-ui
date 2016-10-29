@@ -6,5 +6,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "pretty": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "app/main-aot.ts"
+  ]
 }

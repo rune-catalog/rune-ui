@@ -1,5 +1,6 @@
 import { NgModule, OpaqueToken } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 // Import components
 import { AppComponent } from './components/app.component';
@@ -19,9 +20,13 @@ import { CardListStore } from './stores/card-list.store';
 
 // Import services
 import { DispatcherService } from './services/dispatcher.service';
+import { CardSetService } from './services/card-set.service';
 
 @NgModule({
-  imports: [ BrowserModule ],
+  imports: [
+    BrowserModule,
+    HttpModule
+  ],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -35,6 +40,7 @@ import { DispatcherService } from './services/dispatcher.service';
   ],
   providers: [
     DispatcherService,
+    CardSetService,
     SelectedCardStore,
     ScrollPositionStore,
     CardListStore

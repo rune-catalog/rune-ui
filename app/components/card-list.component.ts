@@ -11,7 +11,7 @@ import * as R from 'ramda';
       <card-list-item
         #item
         class="tk-merriweather"
-        *ngFor="let card of cards"
+        *ngFor="let card of cards.cards"
         [card]="card"
         [selectedCard]="selectedCard"></card-list-item>
     `
