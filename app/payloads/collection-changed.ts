@@ -2,7 +2,7 @@ import { AbstractPayload } from './payload';
 
 export class CollectionChangePayload extends AbstractPayload {
   static get TYPE(): string {
-    return CollectionChangePayload.constructor.name;
+    return CollectionChangePayload.name;
   }
 
   constructor() {

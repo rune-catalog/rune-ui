@@ -2,7 +2,7 @@ import { AbstractPayload } from './payload';
 
 export class CardScrollPositionPayload extends AbstractPayload {
   static get TYPE(): string {
-    return CardScrollPositionPayload.constructor.name;
+    return CardScrollPositionPayload.name;
   }
 
   constructor() {

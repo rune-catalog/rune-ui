@@ -27,7 +27,7 @@ export class CardService {
 export function provideCardService(urlRoot: string): Provider {
   return {
     provide: CardService,
-    useFactory: (urlRoot: string, http: Http) => new CardService(urlRoot, http),
+    useFactory: (http: Http) => new CardService(urlRoot, http),
     deps: [ Http ]
   }
 }

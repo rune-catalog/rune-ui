@@ -2,7 +2,7 @@ import { AbstractPayload } from './payload';
 
 export class CardSetChangePayload extends AbstractPayload {
   static get TYPE(): string {
-    return CardSetChangePayload.constructor.name;
+    return CardSetChangePayload.name;
   }
 
   constructor() {

@@ -1,8 +1,9 @@
-import { Provider } from '@angular/core';
+import { Injectable, Provider } from '@angular/core';
 import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+@Injectable()
 export class CardSetService {
 
   constructor(private urlRoot: string, private http: Http) { }
@@ -36,7 +37,7 @@ class ApiCard {
 export function provideCardSetService(urlRoot: string): Provider {
   return {
     provide: CardSetService,
-    useFactory: (urlRoot: string, http: Http) => new CardSetService(urlRoot, http),
+    useFactory: (http: Http) => new CardSetService(urlRoot, http),
     deps: [ Http ]
   };
 }
