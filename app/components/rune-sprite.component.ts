@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import * as R from 'ramda';
 
 @Component({
   selector: 'rune-sprite',

@@ -6,13 +6,13 @@ import { Payload, TYPE_SELECTED_CARD } from './payload';
 import { Card } from '../model/card';
 
 @Injectable()
-export class SelectedCardStore extends FluxStore<Card> {
+export class SelectedCardStore extends FluxStore<Card | null> {
 
   constructor(dispatcher: DispatcherService, private cardService: CardService) {
     super(dispatcher);
   }
 
-  getInitialState(): Card {
+  getInitialState(): Card | null {
     return null;
   }
 

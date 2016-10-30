@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dispatcher, Action } from 'flux-lite';
+import { Dispatcher } from 'flux-lite';
 import { Payload } from '../stores/payload';
 
 @Injectable()

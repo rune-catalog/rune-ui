@@ -25,7 +25,7 @@ export class CardListItemComponent {
     return this.selectedCard && this.card.name === this.selectedCard.name;
   }
 
-  private onClick(): void {
+  onClick(): void {
     this.dispatcher.dispatch({
       type: TYPE_SELECTED_CARD,
       name: this.card.name

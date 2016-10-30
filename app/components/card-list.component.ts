@@ -1,4 +1,4 @@
-import { Component, Input, HostListener, ViewChildren, QueryList, ElementRef, OnChanges } from '@angular/core';
+import { Component, Input, HostListener, ViewChildren, QueryList, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { CardListItemComponent } from './card-list-item.component';
 import { DispatcherService } from '../services/dispatcher.service';
 import { TYPE_CARD_SCROLL_POSITION } from '../stores/payload';
@@ -38,7 +38,7 @@ export class CardListComponent implements OnChanges {
     });
   }
 
-  ngOnChanges(changes): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.listItems || !changes['index']) {
       return;
     }

@@ -25,7 +25,7 @@ export class ScrollPositionStore extends FluxStore<string> {
   }
 
   getInitialState(): string {
-    return null;
+    return 'a';
   }
 
   reduce(state: string, action: Action<Payload>): Promise<string> {

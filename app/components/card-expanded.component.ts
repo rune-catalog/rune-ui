@@ -53,7 +53,7 @@ export class CardExpandedComponent implements OnInit {
       .then(() => this.collections = this.collectionStore.state);
   }
 
-  private onQuantityChanged(collectionSlug: string, quantity: string): void {
+  onQuantityChanged(collectionSlug: string, quantity: string): void {
     this.dispatcher.dispatch({
       type: TYPE_COLLECTION_CHANGE,
       collectionSlug,

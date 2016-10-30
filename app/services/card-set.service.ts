@@ -17,8 +17,8 @@ export class CardSetService {
       .catch(this.handleError);
   }
 
-  private handleError(err): Promise<any> {
-    return Promise.reject(err.message || err);
+  private handleError(err: Error): Promise<MtgSet> {
+    return Promise.reject<MtgSet>(err.message || err);
   }
 }
 

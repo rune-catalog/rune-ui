@@ -21,7 +21,7 @@ export class LazyScrollDirective {
     this.tolerance = 0;
   }
 
-  @HostListener('scroll') private onScroll(): void {
+  @HostListener('scroll') onScroll(): void {
     let newPosition: number = this.el.nativeElement.scrollTop;
 
     if (newPosition > this.lastPosition + this.tolerance) {

@@ -18,7 +18,7 @@ export class CollectionService {
       .catch(this.handleError);
   }
 
-  updateCollection(slug: string, card: string, quantity: number): Promise<void> {
+  updateCollection(slug: string, card: string, quantity: number): Promise<null> {
     return this.http.patch(this.collectionUrl + `/${slug}`, [ {
       name: card,
       quantity
