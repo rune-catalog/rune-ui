@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Card } from '../model/card';
 import { CollectionStore, Collection } from '../stores/collection.store';
 import { DispatcherService } from '../services/dispatcher.service';
-import { TYPE_COLLECTION_UPDATE } from '../stores/payload';
+import { TYPE_COLLECTION_UPDATE, TYPE_COLLECTION_CHANGE } from '../stores/payload';
 import * as R from 'ramda';
 
 @Component({
@@ -24,11 +24,11 @@ import * as R from 'ramda';
         <span class="collectors-number">{{ card.number }}</span>
       </div>
       <div class="collection">
-        <select class="collection">
-          <option *ngFor="let collection of collections">{{ collection.name }}</option>
+        <select class="collection" #collection>
+          <option *ngFor="let collection of collections" [value]="collection.slug">{{ collection.name }}</option>
         </select>
-        <select class="quantity">
-          <option *ngFor="let val of quantities" value="{{ val }}">{{ val }}</option>
+        <select #quantity class="quantity" (change)="onQuantityChanged(collection.value, quantity.value)">
+          <option *ngFor="let val of quantities" [value]="val">{{ val }}</option>
         </select>
       </div>
     </section>
@@ -51,5 +51,14 @@ export class CardExpandedComponent implements OnInit {
   ngOnInit() {
     this.dispatcher.dispatch({ type: TYPE_COLLECTION_UPDATE })
       .then(() => this.collections = this.collectionStore.state);
+  }
+
+  private onQuantityChanged(collectionSlug: string, quantity: string): void {
+    this.dispatcher.dispatch({
+      type: TYPE_COLLECTION_CHANGE,
+      collectionSlug,
+      cardName: this.card.name,
+      quantity
+    })
   }
 }

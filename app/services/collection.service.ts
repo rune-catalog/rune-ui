@@ -18,6 +18,16 @@ export class CollectionService {
       .catch(this.handleError);
   }
 
+  updateCollection(slug: string, card: string, quantity: number): Promise<void> {
+    return this.http.patch(this.collectionUrl + `/${slug}`, [ {
+      name: card,
+      quantity
+    }])
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
+
   private handleError(err: Error): Promise<Array<Collection>> {
     return Promise.reject<Array<Collection>>(err.message || err);
   }

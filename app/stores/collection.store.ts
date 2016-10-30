@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FluxStore, Action } from 'flux-lite';
-import { Payload, TYPE_COLLECTION_UPDATE } from './payload';
+import { Payload, TYPE_COLLECTION_UPDATE, TYPE_COLLECTION_CHANGE } from './payload';
 import { DispatcherService } from '../services/dispatcher.service';
 import { CollectionService } from '../services/collection.service';
 
@@ -16,8 +16,12 @@ export class CollectionStore extends FluxStore<Array<Collection>> {
   }
 
   reduce(state: Array<Collection>, action: Action<Payload>): Promise<Array<Collection>> {
-    if (action.payload.type === TYPE_COLLECTION_UPDATE) {
-      return this.collectionService.getCollections();
+    switch (action.payload.type) {
+      case TYPE_COLLECTION_UPDATE:
+        return this.collectionService.getCollections();
+      case TYPE_COLLECTION_CHANGE:
+        this.collectionService.updateCollection(action.payload['collectionSlug'], action.payload['cardName'], action.payload['quantity'])
+          .then(() => state);
     }
     return Promise.resolve(state);
   }
