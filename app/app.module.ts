@@ -1,3 +1,5 @@
+/// <reference path="../globals.d.ts" />
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -23,9 +25,9 @@ import {
 
 import {
   DispatcherService,
-  CardSetService,
-  CardService,
-  CollectionService
+  provideCardSetService,
+  provideCardService,
+  provideCollectionService
 } from './services';
 
 @NgModule({
@@ -46,12 +48,12 @@ import {
   ],
   providers: [
     DispatcherService,
-    CardSetService,
-    CardService,
+    provideCardSetService(AppConfig.cardService),
+    provideCardService(AppConfig.cardService),
     SelectedCardStore,
     ScrollPositionStore,
     CardListStore,
-    CollectionService,
+    provideCollectionService(AppConfig.collectionService),
     CollectionStore
   ],
   bootstrap: [ AppComponent ]

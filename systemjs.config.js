@@ -6,7 +6,7 @@
 
     map: {
       // App
-      app: 'app',
+      app: 'debug',
 
       // Angular
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
