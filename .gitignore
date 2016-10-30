@@ -8,3 +8,4 @@ styles.css
 /dist/
 npm-debug.log
 static/img/sprites.svg
+debug/

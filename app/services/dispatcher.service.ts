@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dispatcher } from 'flux-lite';
-import { Payload } from '../stores/payload';
+import { AbstractPayload } from '../payloads';
 
 @Injectable()
-export class DispatcherService extends Dispatcher<Payload> { }
+export class DispatcherService extends Dispatcher<AbstractPayload> { }

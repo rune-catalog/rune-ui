@@ -1,10 +1,12 @@
+import {
+  ScrollPositionStore,
+  SelectedCardStore,
+  CardListStore
+} from '../stores';
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { DispatcherService } from '../services/dispatcher.service';
-import { TYPE_CARD_LIST_SET } from '../stores/payload';
-import { SelectedCardStore } from '../stores/selected-card.store';
-import { ScrollPositionStore } from '../stores/scroll-position.store';
-import { CardListStore } from '../stores/card-list.store';
-import { Card } from '../model/card';
+import { DispatcherService } from '../services';
+import { CardSetChangePayload } from '../payloads';
+import { Card } from '../model';
 
 @Component({
   selector: 'my-app',
@@ -27,11 +29,10 @@ export class AppComponent implements DoCheck, OnInit {
       private dispatcher: DispatcherService) { }
 
   ngOnInit(): void {
-    this.dispatcher.dispatch({
-      type: TYPE_CARD_LIST_SET,
-      setName: 'ody'
-    })
-    .then(() => this.cards = this.cardListStore.state);
+    let payload = new CardSetChangePayload();
+    payload.setName = 'ody';
+    this.dispatcher.dispatch(payload)
+      .then(() => this.cards = this.cardListStore.state);
   }
 
   ngDoCheck(): void {

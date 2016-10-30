@@ -1,8 +1,8 @@
 import { Component, Input, HostListener, ViewChildren, QueryList, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { CardListItemComponent } from './card-list-item.component';
-import { DispatcherService } from '../services/dispatcher.service';
-import { TYPE_CARD_SCROLL_POSITION } from '../stores/payload';
-import { Card } from '../model/card';
+import { DispatcherService } from '../services';
+import { CardScrollPositionPayload } from '../payloads';
+import { Card } from '../model';
 import * as R from 'ramda';
 
 @Component({
@@ -32,10 +32,9 @@ export class CardListComponent implements OnChanges {
       return cbb.top - bb.top <= 0 && cbb.bottom - bb.top > 0;
     }, this.listItems.toArray());
 
-    this.dispatcher.dispatch({
-      type: TYPE_CARD_SCROLL_POSITION,
-      cardName: topmostCard.card.name
-    });
+    let payload = new CardScrollPositionPayload();
+    payload.cardName = topmostCard.card.name;
+    this.dispatcher.dispatch(payload);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -1,8 +1,8 @@
 import { Component, Input, ElementRef } from '@angular/core';
 
-import { TYPE_SELECTED_CARD } from '../stores/payload';
-import { DispatcherService } from '../services/dispatcher.service';
-import { Card } from '../model/card';
+import { SelectedCardChangePayload } from '../payloads';
+import { DispatcherService } from '../services';
+import { Card } from '../model';
 
 @Component({
   selector: 'card-list-item',
@@ -26,9 +26,8 @@ export class CardListItemComponent {
   }
 
   onClick(): void {
-    this.dispatcher.dispatch({
-      type: TYPE_SELECTED_CARD,
-      name: this.card.name
-    });
+    let payload = new SelectedCardChangePayload();
+    payload.name = this.card.name;
+    this.dispatcher.dispatch(payload);
   }
 }

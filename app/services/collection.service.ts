@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Collection } from '../stores/collection.store';
+import { Collection } from '../model';
 
 import 'rxjs/add/operator/toPromise';
 

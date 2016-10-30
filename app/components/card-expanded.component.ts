@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Card } from '../model/card';
-import { CollectionStore, Collection } from '../stores/collection.store';
-import { DispatcherService } from '../services/dispatcher.service';
-import { TYPE_COLLECTION_UPDATE, TYPE_COLLECTION_CHANGE } from '../stores/payload';
+import { Card, Collection } from '../model';
+import { CollectionStore } from '../stores';
+import { DispatcherService } from '../services';
+import { CollectionChangePayload, CollectionUpdatePayload } from '../payloads';
 import * as R from 'ramda';
 
 @Component({
@@ -49,16 +49,16 @@ export class CardExpandedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dispatcher.dispatch({ type: TYPE_COLLECTION_UPDATE })
+    this.dispatcher.dispatch(new CollectionUpdatePayload())
       .then(() => this.collections = this.collectionStore.state);
   }
 
   onQuantityChanged(collectionSlug: string, quantity: string): void {
-    this.dispatcher.dispatch({
-      type: TYPE_COLLECTION_CHANGE,
+    this.dispatcher.dispatch(<CollectionChangePayload>{
+      type: CollectionChangePayload.TYPE,
       collectionSlug,
       cardName: this.card.name,
-      quantity
+      quantity: 4
     })
   }
 }

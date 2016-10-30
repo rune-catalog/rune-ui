@@ -1,5 +1,5 @@
-import { DispatcherService } from '../services/dispatcher.service';
-import { TYPE_CARD_SCROLL_POSITION } from '../stores/payload';
+import { DispatcherService } from '../services';
+import { CardScrollPositionPayload } from '../payloads';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -19,9 +19,8 @@ export class IndexComponent {
   constructor(private dispatcher: DispatcherService) { }
 
   onClick(letter: string): void {
-    this.dispatcher.dispatch({
-      type: TYPE_CARD_SCROLL_POSITION,
-      cardName: letter
-    });
+    let payload = new CardScrollPositionPayload();
+    payload.cardName = letter;
+    this.dispatcher.dispatch(payload);
   }
 }
