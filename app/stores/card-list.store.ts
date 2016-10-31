@@ -43,7 +43,7 @@ export class CardListStore extends FluxStore<Array<Card>> {
     return this.setService.getSet(action.payload.setName)
       .then(set => R.map(apiCard => <any>({
         name: apiCard.name,
-        colors: apiCard.colors
+        colors: apiCard.colors ? apiCard.colors : 'colorless'
       }), set.cards))
       .then(set => R.sortBy(R.prop('name'), set));
   }

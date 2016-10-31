@@ -10,6 +10,6 @@ export class RuneSpriteComponent {
   @Input() colors: string;
 
   get href(): string {
-    return `static/img/sprites.svg#${this.colors}`;
+    return `img/sprites.svg#${this.colors}`;
   }
 }

@@ -1,6 +1,6 @@
 {
   "server": {
-    "baseDir": ".",
+    "baseDir": [ ".", "node_modules/rune-ui-resources/dist" ],
     "index": "index.dev.html"
   },
   "files": [
