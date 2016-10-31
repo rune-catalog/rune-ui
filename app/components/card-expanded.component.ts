@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Card, Collection } from '../model';
 import { CollectionStore } from '../stores';
 import { DispatcherService } from '../services';
-import { CollectionChangePayload, CollectionUpdatePayload } from '../payloads';
+import { CollectionChangePayload } from '../payloads';
 import * as R from 'ramda';
 
 @Component({
@@ -49,8 +49,7 @@ export class CardExpandedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dispatcher.dispatch(new CollectionUpdatePayload())
-      .then(() => this.collections = this.collectionStore.state);
+    this.collections = this.collectionStore.state;
   }
 
   onQuantityChanged(collectionSlug: string, quantity: string): void {

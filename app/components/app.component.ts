@@ -1,11 +1,15 @@
 import {
   ScrollPositionStore,
   SelectedCardStore,
-  CardListStore
+  CardListStore,
+  CollectionStore
 } from '../stores';
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { DispatcherService } from '../services';
-import { CardSetChangePayload } from '../payloads';
+import {
+  CardSetChangePayload,
+  CollectionUpdatePayload
+} from '../payloads';
 import { Card } from '../model';
 
 @Component({
@@ -26,6 +30,7 @@ export class AppComponent implements DoCheck, OnInit {
       private selectedCardStore: SelectedCardStore,
       private cardScrollPositionStore: ScrollPositionStore,
       private cardListStore: CardListStore,
+      collectionStore: CollectionStore, // Inject to initialize the store before events start dispatching
       private dispatcher: DispatcherService) { }
 
   ngOnInit(): void {
@@ -33,6 +38,9 @@ export class AppComponent implements DoCheck, OnInit {
     payload.setName = 'ody';
     this.dispatcher.dispatch(payload)
       .then(() => this.cards = this.cardListStore.state);
+
+    let collectionsPayload = new CollectionUpdatePayload();
+    this.dispatcher.dispatch(collectionsPayload);
   }
 
   ngDoCheck(): void {
