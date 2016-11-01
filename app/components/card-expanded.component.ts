@@ -53,11 +53,10 @@ export class CardExpandedComponent implements OnInit {
   }
 
   onQuantityChanged(collectionSlug: string, quantity: string): void {
-    this.dispatcher.dispatch(<CollectionChangePayload>{
-      type: CollectionChangePayload.TYPE,
-      collectionSlug,
-      cardName: this.card.name,
-      quantity: 4
-    })
+    let payload = new CollectionChangePayload();
+    payload.collectionSlug = collectionSlug;
+    payload.cardName = this.card.name;
+    payload.quantity = parseInt(quantity);
+    this.dispatcher.dispatch(payload);
   }
 }

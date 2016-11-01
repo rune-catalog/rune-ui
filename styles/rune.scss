@@ -21,6 +21,13 @@ body {
   overflow: hidden;;
 }
 
+select {
+  background: transparent;
+  border-radius: 0;
+  color: white;
+  font-size: 14px;
+}
+
 my-app {
   bottom: 0;
   display: flex;
