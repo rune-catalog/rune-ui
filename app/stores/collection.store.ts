@@ -3,7 +3,6 @@ import { FluxStore, Action } from 'flux-lite';
 import { CollectionChangePayload, CollectionUpdatePayload } from '../payloads';
 import { CollectionService, DispatcherService } from '../services';
 import { Collection } from '../model';
-import * as R from 'ramda';
 
 @Injectable()
 export class CollectionStore extends FluxStore<Array<Collection>> {
@@ -28,10 +27,7 @@ export class CollectionStore extends FluxStore<Array<Collection>> {
     }
   }
 
-  private updateCollection(state: Array<Collection>, payload: CollectionUpdatePayload): Promise<null> {
-    let collection = state[0];
-    let existingEntry = R.find(R.propEq('name', payload.cardName), collection);
-
+  private updateCollection(state: Array<Collection>, payload: CollectionChangePayload): Promise<null> {
     return this.collectionService.updateCollection(
         payload.collectionSlug,
         payload.cardName,
