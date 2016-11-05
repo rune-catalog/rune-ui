@@ -28,7 +28,7 @@ import * as R from 'ramda';
           <option *ngFor="let collection of collections" [value]="collection.slug">{{ collection.name }}</option>
         </select>
         <select #quantity class="quantity" (change)="onQuantityChanged(collection.value, quantity.value)">
-          <option *ngFor="let val of quantities" [value]="val">{{ val }}</option>
+          <option *ngFor="let opt of quantities" [selected]="opt.selected" [value]="opt.val">{{ opt.val }}</option>
         </select>
       </div>
     </section>
@@ -44,8 +44,17 @@ export class CardExpandedComponent implements OnInit {
     return [ 'icon', 'mana-icon', this.card.colors ];
   }
 
-  get quantities(): Array<number> {
-    return R.range(0, 26);
+  get quantities(): Array<NumericalSelectOption> {
+    let selectedCollection = this.collections[0];
+    let existingEntry = R.find(R.propEq('name', this.card.name), selectedCollection.cards);
+    let existingQuantity = existingEntry
+      ? existingEntry.quantity
+      : 0;
+
+    return R.map(idx => ({
+      selected: idx === existingQuantity,
+      val: idx
+    }), R.range(0, 26));
   }
 
   ngOnInit() {
@@ -53,10 +62,15 @@ export class CardExpandedComponent implements OnInit {
   }
 
   onQuantityChanged(collectionSlug: string, quantity: string): void {
-    let payload = new CollectionChangePayload();
-    payload.collectionSlug = collectionSlug;
-    payload.cardName = this.card.name;
-    payload.quantity = parseInt(quantity);
-    this.dispatcher.dispatch(payload);
+    this.dispatcher.dispatch(new CollectionChangePayload({
+      collectionSlug: collectionSlug,
+      cardName: this.card.name,
+      quantity: parseInt(quantity)
+    }));
   }
+}
+
+interface NumericalSelectOption {
+  selected: boolean;
+  val: number;
 }
