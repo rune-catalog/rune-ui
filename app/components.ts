@@ -7,3 +7,4 @@ export * from './components/header.component';
 export * from './components/index.component';
 export * from './components/lazy-scroll.component';
 export * from './components/rune-sprite.component';
+export * from './components/search.component';

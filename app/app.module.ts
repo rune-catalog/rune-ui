@@ -13,21 +13,25 @@ import {
   CardCollapsedComponent,
   CardExpandedComponent,
   LazyScrollDirective,
-  RuneSpriteComponent
+  RuneSpriteComponent,
+  RuneSearchComponent
 } from './components';
 
 import {
   SelectedCardStore,
   ScrollPositionStore,
   CardListStore,
-  CollectionStore
+  CollectionStore,
+  ViewStore,
+  SetStore
 } from './stores';
 
 import {
   DispatcherService,
   provideCardSetService,
   provideCardService,
-  provideCollectionService
+  provideCollectionService,
+  provideSetService
 } from './services';
 
 @NgModule({
@@ -44,7 +48,8 @@ import {
     CardCollapsedComponent,
     CardExpandedComponent,
     LazyScrollDirective,
-    RuneSpriteComponent
+    RuneSpriteComponent,
+    RuneSearchComponent
   ],
   providers: [
     DispatcherService,
@@ -54,7 +59,10 @@ import {
     ScrollPositionStore,
     CardListStore,
     provideCollectionService(AppConfig.collectionService),
-    CollectionStore
+    provideSetService(AppConfig.cardService),
+    CollectionStore,
+    ViewStore,
+    SetStore
   ],
   bootstrap: [ AppComponent ]
 })
