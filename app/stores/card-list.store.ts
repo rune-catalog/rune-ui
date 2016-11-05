@@ -40,6 +40,10 @@ export class CardListStore extends FluxStore<Array<Card>> {
   }
 
   private getCardList(action: Action<CardSetChangePayload>): Promise<Array<Card>> {
+    if (action.payload.setName === null) {
+      return Promise.resolve([ ]);
+    }
+
     return this.setService.getSet(action.payload.setName)
       .then(set => R.map(apiCard => <any>({
         name: apiCard.name,

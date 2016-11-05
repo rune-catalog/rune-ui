@@ -9,7 +9,6 @@ import {
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { DispatcherService } from '../services';
 import {
-  CardSetChangePayload,
   CollectionUpdatePayload,
   SetsUpdatedPayload
 } from '../payloads';
@@ -41,11 +40,6 @@ export class AppComponent implements DoCheck, OnInit {
       private dispatcher: DispatcherService) { }
 
   ngOnInit(): void {
-    let payload = new CardSetChangePayload();
-    payload.setName = 'ody';
-    this.dispatcher.dispatch(payload)
-      .then(() => this.cards = this.cardListStore.state);
-
     this.dispatcher.dispatch(new CollectionUpdatePayload());
     this.dispatcher.dispatch(new SetsUpdatedPayload());
   }

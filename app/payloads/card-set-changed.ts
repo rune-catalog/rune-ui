@@ -5,10 +5,15 @@ export class CardSetChangePayload extends AbstractPayload {
     return CardSetChangePayload.name;
   }
 
-  constructor() {
+  constructor(initializer: CardSetChangePayloadInitializer) {
     super();
     this._type = this.constructor.name;
+    this.setName = initializer.setName;
   }
 
+  setName: string;
+}
+
+export interface CardSetChangePayloadInitializer {
   setName: string;
 }

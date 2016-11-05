@@ -8,12 +8,13 @@ import * as R from 'ramda';
 @Component({
   selector: 'card-list',
   template: `
-      <card-list-item
-        #item
-        class="tk-merriweather"
-        *ngFor="let card of cards"
-        [card]="card"
-        [selectedCard]="selectedCard"></card-list-item>
+    <span *ngIf="!cards || !cards.length">Select a set</span>
+    <card-list-item
+      #item
+      class="tk-merriweather"
+      *ngFor="let card of cards"
+      [card]="card"
+      [selectedCard]="selectedCard"></card-list-item>
     `
 })
 export class CardListComponent implements OnChanges {
