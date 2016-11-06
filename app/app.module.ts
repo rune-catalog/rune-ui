@@ -23,15 +23,18 @@ import {
   CardListStore,
   CollectionStore,
   ViewStore,
-  SetStore
+  SetStore,
+  CurrentUserStore
 } from './stores';
 
 import {
   DispatcherService,
+  AuthTokenService,
   provideCardSetService,
   provideCardService,
   provideCollectionService,
-  provideSetService
+  provideSetService,
+  provideUserService
 } from './services';
 
 @NgModule({
@@ -52,6 +55,7 @@ import {
     RuneSearchComponent
   ],
   providers: [
+    AuthTokenService,
     DispatcherService,
     provideCardSetService(AppConfig.cardService),
     provideCardService(AppConfig.cardService),
@@ -60,9 +64,11 @@ import {
     CardListStore,
     provideCollectionService(AppConfig.collectionService),
     provideSetService(AppConfig.cardService),
+    provideUserService(AppConfig.userService),
     CollectionStore,
     ViewStore,
-    SetStore
+    SetStore,
+    CurrentUserStore
   ],
   bootstrap: [ AppComponent ]
 })

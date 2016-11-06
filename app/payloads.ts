@@ -6,3 +6,4 @@ export * from './payloads/collection-updated';
 export * from './payloads/selected-card-changed';
 export * from './payloads/view-change';
 export * from './payloads/sets-updated';
+export * from './payloads/login';
