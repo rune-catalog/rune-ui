@@ -1,19 +1,25 @@
+import { Injectable } from '@angular/core';
 import { FluxStore, Action } from 'flux-lite';
-import { AbstractPayload } from '../payloads';
+import { LoginPayload } from '../payloads';
 import { User } from '../model';
 import { DispatcherService, UserService } from '../services';
 
+@Injectable()
 export class CurrentUserStore extends FluxStore<User | null> {
 
   constructor(dispatcher: DispatcherService, private userService: UserService) {
     super(dispatcher);
   }
 
-  getInitialState(): User {
-    return this.userService.currentUser();
+  getInitialState(): User | null {
+    return null;
   }
 
-  reduce(state: User | null, action: Action<AbstractPayload>): Promise<User | null> {
-    return Promise.resolve(state);
+  reduce(state: User | null, action: Action<LoginPayload>): Promise<User | null> {
+    if (action.payload.type === LoginPayload.TYPE) {
+      return this.userService.login(action.payload.email, action.payload.password);
+    }
+
+    return Promise.resolve(this.userService.currentUser());
   }
 }

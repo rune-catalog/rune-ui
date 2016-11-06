@@ -1,6 +1,7 @@
 /// <reference path="../globals.d.ts" />
 
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
@@ -14,7 +15,9 @@ import {
   CardExpandedComponent,
   LazyScrollDirective,
   RuneSpriteComponent,
-  RuneSearchComponent
+  RuneSearchComponent,
+  RuneLoginComponent,
+  RuneCollectionComponent
 } from './components';
 
 import {
@@ -34,13 +37,18 @@ import {
   provideCardService,
   provideCollectionService,
   provideSetService,
-  provideUserService
+  provideUserService,
+  StoreInitializerService
 } from './services';
 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+        { path: 'login', component: RuneLoginComponent },
+        { path: '', component: RuneCollectionComponent }
+    ])
   ],
   declarations: [
     AppComponent,
@@ -52,23 +60,26 @@ import {
     CardExpandedComponent,
     LazyScrollDirective,
     RuneSpriteComponent,
-    RuneSearchComponent
+    RuneSearchComponent,
+    RuneCollectionComponent,
+    RuneLoginComponent
   ],
   providers: [
-    AuthTokenService,
-    DispatcherService,
     provideCardSetService(AppConfig.cardService),
     provideCardService(AppConfig.cardService),
-    SelectedCardStore,
-    ScrollPositionStore,
-    CardListStore,
     provideCollectionService(AppConfig.collectionService),
     provideSetService(AppConfig.cardService),
     provideUserService(AppConfig.userService),
+    AuthTokenService,
+    StoreInitializerService,
+    CardListStore,
     CollectionStore,
-    ViewStore,
+    CurrentUserStore,
+    DispatcherService,
+    ScrollPositionStore,
+    SelectedCardStore,
     SetStore,
-    CurrentUserStore
+    ViewStore
   ],
   bootstrap: [ AppComponent ]
 })
