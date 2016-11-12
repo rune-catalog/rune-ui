@@ -10,7 +10,8 @@ import { View } from '../model';
     <a><i class="icon icon-search"></i></a>
     <a><i class="icon icon-add"></i></a>
     <span class="divider"></span>
-    <rune-sprite (click)="onSearchClick()" [colors]="'search'"></rune-sprite>`
+    <rune-sprite (click)="onSearchClick()" [colors]="'search'"></rune-sprite>
+    <rune-sprite [colors]="'menu'"></rune-sprite>`
 })
 export class HeaderComponent {
 

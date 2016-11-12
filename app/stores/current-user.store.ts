@@ -11,15 +11,15 @@ export class CurrentUserStore extends FluxStore<User | null> {
     super(dispatcher);
   }
 
-  getInitialState(): User | null {
-    return null;
+  protected getInitialState(): User | null {
+    return this.userService.currentUser();
   }
 
-  reduce(state: User | null, action: Action<LoginPayload>): Promise<User | null> {
+  protected reduce(state: User | null, action: Action<LoginPayload>): Promise<User | null> | User | null {
     if (action.payload.type === LoginPayload.TYPE) {
       return this.userService.login(action.payload.email, action.payload.password);
     }
 
-    return Promise.resolve(this.userService.currentUser());
+    return state;
   }
 }
