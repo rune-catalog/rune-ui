@@ -1,12 +1,14 @@
-import { Provider } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Collection } from '../model';
+import { UrlService } from './url.service';
 
 import 'rxjs/add/operator/toPromise';
 
+@Injectable()
 export class CollectionService {
 
-  constructor(private urlRoot: string, private http: Http) { }
+  constructor(private urlService: UrlService, private http: Http) { }
 
   getCollections(): Promise<Array<Collection>> {
     return this.http.get(this.buildUrl())
@@ -30,14 +32,6 @@ export class CollectionService {
   }
 
   private buildUrl(path: string = ''): string {
-    return `${this.urlRoot}/collection/sam${path}`;
+    return `${this.urlService.collectionUrl}/collection/sam${path}`;
   }
-}
-
-export function provideCollectionService(urlRoot: string): Provider {
-  return {
-    provide: CollectionService,
-    useFactory: (http: Http) => new CollectionService(urlRoot, http),
-    deps: [ Http ]
-  };
 }

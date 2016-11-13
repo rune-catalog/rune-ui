@@ -33,12 +33,13 @@ import {
 import {
   DispatcherService,
   AuthTokenService,
-  provideCardSetService,
-  provideCardService,
-  provideCollectionService,
-  provideSetService,
-  provideUserService,
-  StoreInitializerService
+  CardSetService,
+  CardService,
+  CollectionService,
+  SetService,
+  UserService,
+  StoreInitializerService,
+  UrlService
 } from './services';
 
 @NgModule({
@@ -65,11 +66,11 @@ import {
     RuneLoginComponent
   ],
   providers: [
-    provideCardSetService(AppConfig.cardService),
-    provideCardService(AppConfig.cardService),
-    provideCollectionService(AppConfig.collectionService),
-    provideSetService(AppConfig.cardService),
-    provideUserService(AppConfig.userService),
+    CardSetService,
+    CardService,
+    CollectionService,
+    SetService,
+    UserService,
     AuthTokenService,
     StoreInitializerService,
     CardListStore,
@@ -79,7 +80,8 @@ import {
     ScrollPositionStore,
     SelectedCardStore,
     SetStore,
-    ViewStore
+    ViewStore,
+    UrlService
   ],
   bootstrap: [ AppComponent ]
 })

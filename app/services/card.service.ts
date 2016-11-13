@@ -1,12 +1,14 @@
-import { Provider } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Card } from '../model/card';
+import { UrlService } from './url.service';
 
 import 'rxjs/add/operator/toPromise';
 
+@Injectable()
 export class CardService {
 
-  constructor(private urlRoot: string, private http: Http) { }
+  constructor(private urlService: UrlService, private http: Http) { }
 
   getCard(name: string): Promise<Card> {
     return this.http.get(this.buildUrl(`/${name}`))
@@ -20,14 +22,6 @@ export class CardService {
   }
 
   private buildUrl(path: string = ''): string {
-    return `${this.urlRoot}/card${path}`;
-  }
-}
-
-export function provideCardService(urlRoot: string): Provider {
-  return {
-    provide: CardService,
-    useFactory: (http: Http) => new CardService(urlRoot, http),
-    deps: [ Http ]
+    return `${this.urlService.cardUrl}/card${path}`;
   }
 }

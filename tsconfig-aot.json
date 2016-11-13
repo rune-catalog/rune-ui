@@ -8,7 +8,10 @@
     "removeComments": true,
     "pretty": true
   },
-
+  "exclude": [
+    "node_modules/",
+    "app/main.ts"
+  ],
   "angularCompilerOptions": {
     "genDir": "aot",
     "skipMetadataEmit": true

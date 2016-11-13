@@ -1,13 +1,14 @@
-import { Injectable, Provider } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Set } from '../model';
+import { UrlService } from './url.service';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SetService {
 
-  constructor(private urlRoot: string, private http: Http) { }
+  constructor(private urlService: UrlService, private http: Http) { }
 
   getSets(): Promise<Array<Set>> {
     return this.http.get(this.buildUrl())
@@ -21,14 +22,6 @@ export class SetService {
   }
 
   private buildUrl(): string {
-    return `${this.urlRoot}/sets`;
+    return `${this.urlService.cardUrl}/sets`;
   }
-}
-
-export function provideSetService(urlRoot: string): Provider {
-  return {
-    provide: SetService,
-    useFactory: (http: Http) => new SetService(urlRoot, http),
-    deps: [ Http ]
-  };
 }

@@ -1,7 +1,8 @@
-import { Injectable, Provider } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { User } from '../model';
 import { AuthTokenService, AuthToken } from './auth-token.service';
+import { UrlService } from './url.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
 export class UserService {
 
   constructor(
-      private urlRoot: string,
+      private urlService: UrlService,
       private http: Http,
       private authTokenService: AuthTokenService) { }
 
@@ -43,14 +44,6 @@ export class UserService {
   }
 
   private buildUrl(): string {
-    return `${this.urlRoot}/login`;
+    return `${this.urlService.userUrl}/login`;
   }
-}
-
-export function provideUserService(urlRoot: string): Provider {
-  return {
-    provide: UserService,
-    useFactory: (http: Http, authTokenService: AuthTokenService) => new UserService(urlRoot, http, authTokenService),
-    deps: [ Http, AuthTokenService ]
-  };
 }

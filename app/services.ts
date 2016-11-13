@@ -6,3 +6,4 @@ export * from './services/set.service';
 export * from './services/user.service';
 export * from './services/auth-token.service';
 export * from './services/store-initializer.service';
+export * from './services/url.service';
