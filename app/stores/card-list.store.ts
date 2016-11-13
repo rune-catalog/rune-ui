@@ -6,8 +6,10 @@ import { Card } from '../model';
 import { SelectedCardStore } from './selected-card.store';
 import * as R from 'ramda';
 
+type TPayload = CardSetChangePayload | SelectedCardChangePayload;
+
 @Injectable()
-export class CardListStore extends FluxStore<Array<Card>> {
+export class CardListStore extends FluxStore<Array<Card>, TPayload> {
 
   constructor(
       dispatcher: DispatcherService,
@@ -20,8 +22,8 @@ export class CardListStore extends FluxStore<Array<Card>> {
     return [ ];
   }
 
-  reduce(state: Array<Card>, action: Action<CardSetChangePayload | SelectedCardChangePayload>): Promise<Array<Card>> {
-    switch (action.payload.type) {
+  reduce(state: Array<Card>, payload: TPayload, action: Action<TPayload>): Promise<Array<Card>> {
+    switch (payload.type) {
       case CardSetChangePayload.TYPE:
         return this.getCardList(<any>action);
       case SelectedCardChangePayload.TYPE:
