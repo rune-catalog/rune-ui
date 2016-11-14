@@ -1,6 +1,6 @@
 {
   "name": "rune-ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An app for organizing your magic cards",
   "main": "index.js",
   "repository": "rune-catalog/rune-ui",
